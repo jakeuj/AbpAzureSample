@@ -1,2 +1,2 @@
 [config]
-project = src/TestCiCd.HttpApi.Host/TestCiCd.HttpApi.Host.csproj
+command = deploy.cmd

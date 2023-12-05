@@ -48,14 +48,14 @@ IF NOT DEFINED KUDU_SYNC_CMD (
   SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 )
 
-IF NOT DEFINED YARN (
+IF NOT DEFINED YARN_CMD (
   :: Install yarn
   echo Installing yarn
   call npm install yarn -g --silent
   IF !ERRORLEVEL! NEQ 0 goto error
 
   :: Locally just running "yarn" would also work
-  SET YARN=%appdata%\npm\node_modules\yarn\bin\yarn.js
+  SET YARN_CMD=%appdata%\npm\yarn.cmd
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

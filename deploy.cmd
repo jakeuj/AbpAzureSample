@@ -48,21 +48,14 @@ IF NOT DEFINED KUDU_SYNC_CMD (
   SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 )
 
-IF NOT DEFINED ABP (
-	:: Install ABP Cli
-	echo Installing ABP Cli
-	call dotnet tool update -g Volo.Abp.Cli --version "*-rc*"
-	IF !ERRORLEVEL! NEQ 0 goto error
-)
-
-:: Install ABP libs
-echo Installing ABP libs
-call :ExecuteCmd "C:\local\UserProfile\.dotnet\tools\abp.exe install-libs --working-directory "%DEPLOYMENT_SOURCE%\src\TestCiCd.HttpApi.Host\"
-IF !ERRORLEVEL! NEQ 0 goto error
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
 :: ----------
+
+:: Install ABP libs
+echo Installing ABP libs
+call :ExecuteCmd "C:\local\UserProfile\.dotnet\tools\abp.exe" install-libs --working-directory "%DEPLOYMENT_SOURCE%\src\TestCiCd.HttpApi.Host\"
+IF !ERRORLEVEL! NEQ 0 goto error
 
 echo Handling ASP.NET Core Web Application deployment with MSBuild16.
 

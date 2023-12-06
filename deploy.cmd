@@ -55,7 +55,7 @@ IF NOT DEFINED YARN_CMD (
   IF !ERRORLEVEL! NEQ 0 goto error
 
   :: Locally just running "yarn" would also work
-  SET YARN_CMD=%appdata%\npm\yarn.cmd
+  SET PATH=%appdata%\npm\
 )
 
 IF NOT DEFINED ABP_CMD (
@@ -65,7 +65,7 @@ IF NOT DEFINED ABP_CMD (
 	IF !ERRORLEVEL! NEQ 0 goto error
 
   :: Locally just running "abp" would also work
-  SET ABP_CMD=%UserProfile%\.dotnet\tools\abp.exe
+  SET PATH=%UserProfile%\.dotnet\tools\
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

@@ -58,13 +58,23 @@ IF NOT DEFINED YARN_CMD (
   SET YARN_CMD=%appdata%\npm\yarn.cmd
 )
 
+IF NOT DEFINED ABP_CMD (
+	:: Install ABP Cli
+	echo Installing ABP Cli
+	call dotnet tool update -g Volo.Abp.Cli --prerelease
+	IF !ERRORLEVEL! NEQ 0 goto error
+
+  :: Locally just running "abp" would also work
+  SET ABP_CMD=%UserProfile%\.dotnet\tools\abp.exe
+)
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
 :: ----------
 
 :: Install ABP libs
 echo Installing ABP libs
-call :ExecuteCmd "C:\local\UserProfile\.dotnet\tools\abp.exe" install-libs -wd "%DEPLOYMENT_SOURCE%\src\TestCiCd.HttpApi.Host"
+call :ExecuteCmd "%UserProfile%\.dotnet\tools\abp.exe" install-libs -wd "%DEPLOYMENT_SOURCE%\src\TestCiCd.HttpApi.Host"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo Handling ASP.NET Core Web Application deployment with MSBuild16.

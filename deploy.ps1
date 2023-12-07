@@ -91,7 +91,8 @@ npm install yarn -g --silent
 # Install abp
 echo "Installing abp"
 dotnet tool update -g Volo.Abp.Cli --prerelease
-$env:Path += "%USERPROFILE%\.dotnet\tools\;"
+# Locally just running "abp" would also work
+$env:Path += "$env:USERPROFILE\.dotnet\tools\;"
 
 # Install abp libs
 echo "Installing ABP libs"

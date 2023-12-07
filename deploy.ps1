@@ -85,6 +85,8 @@ if ($MSBUILD_PATH -eq $null) {
 # Deployment
 # ----------
 
+echo "Handling ABP Libs install."
+
 # Install Yarn
 echo "Installing Yarn"
 npm install yarn -g --silent

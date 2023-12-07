@@ -84,6 +84,16 @@ if ($MSBUILD_PATH -eq $null) {
 # Deployment
 # ----------
 
+# Install yarn
+echo "Installing yarn"
+npm install yarn -g --silent
+exitWithMessageOnError "npm failed"
+
+# Install abp
+echo "Installing abp"
+dotnet tool update -g Volo.Abp.Cli --prerelease
+exitWithMessageOnError "dotnet tool update failed"
+
 echo "Handling ASP.NET Core Web Application deployment."
 
 # 1. Restore nuget packages

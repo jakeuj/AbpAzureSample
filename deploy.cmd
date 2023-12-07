@@ -50,7 +50,7 @@ IF NOT DEFINED KUDU_SYNC_CMD (
 
 :: add npm path
 echo add npm path
-SET PATH=%appdata%\npm\
+set PATH=%PATH%;%appdata%\npm\
 
 IF NOT DEFINED YARN_CMD (
   :: Install yarn
@@ -64,7 +64,7 @@ IF NOT DEFINED YARN_CMD (
 
 :: add dotnet path
 echo add dotnet path
-SET PATH=%UserProfile%\.dotnet\tools\
+set PATH=%PATH%;%UserProfile%\.dotnet\tools\
 
 IF NOT DEFINED ABP_CMD (
 	:: Install ABP Cli

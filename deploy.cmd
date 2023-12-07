@@ -48,6 +48,10 @@ IF NOT DEFINED KUDU_SYNC_CMD (
   SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 )
 
+:: add npm path
+echo add npm path
+SET PATH=%appdata%\npm\
+
 IF NOT DEFINED YARN_CMD (
   :: Install yarn
   echo Installing yarn
@@ -55,8 +59,12 @@ IF NOT DEFINED YARN_CMD (
   IF !ERRORLEVEL! NEQ 0 goto error
 
   :: Locally just running "yarn" would also work
-  SET PATH=%appdata%\npm\
+  SET YARN_CMD=%appdata%\npm\yarn.cmd
 )
+
+:: add dotnet path
+echo add dotnet path
+SET PATH=%UserProfile%\.dotnet\tools\
 
 IF NOT DEFINED ABP_CMD (
 	:: Install ABP Cli
@@ -65,7 +73,7 @@ IF NOT DEFINED ABP_CMD (
 	IF !ERRORLEVEL! NEQ 0 goto error
 
   :: Locally just running "abp" would also work
-  SET PATH=%UserProfile%\.dotnet\tools\
+  ABP_CMD=%UserProfile%\.dotnet\tools\abp.exe
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

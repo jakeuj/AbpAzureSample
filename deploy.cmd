@@ -69,7 +69,7 @@ IF NOT DEFINED ABP_CMD (
 	IF !ERRORLEVEL! NEQ 0 goto error
 
   :: Locally just running "abp" would also work
-  :: ABP_CMD=%UserProfile%\.dotnet\tools\abp.exe
+  SET ABP_CMD=%UserProfile%\.dotnet\tools\abp.exe
 
   :: add dotnet tools path
   echo add dotnet tools path

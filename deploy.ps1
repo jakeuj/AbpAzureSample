@@ -82,7 +82,7 @@ if ($MSBUILD_PATH -eq $null) {
 }
 
 ##################################################################################################################################
-# Install ABP Libs
+# Deployment
 # ----------
 
 # Install Yarn
@@ -97,12 +97,7 @@ $env:Path += "$env:USERPROFILE\.dotnet\tools\;"
 
 # Install ABP Libs
 echo "Installing ABP Libs"
-abp install-libs -wd "$DEPLOYMENT_SOURCE\src\TestCiCd.HttpApi.Host"
-##################################################################################################################################
-
-##################################################################################################################################
-# Deployment
-# ----------
+abp install-libs -wd "$DEPLOYMENT_SOURCE\src/TestCiCd.HttpApi.Host"
 
 echo "Handling ASP.NET Core Web Application deployment."
 

@@ -80,23 +80,29 @@ if ($CLEAN_LOCAL_DEPLOYMENT_TEMP -eq $true) {
 if ($MSBUILD_PATH -eq $null) {
   $MSBUILD_PATH = "${env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
 }
+
 ##################################################################################################################################
-# Deployment
+# Install ABP Libs
 # ----------
 
-# Install yarn
-echo "Installing yarn"
+# Install Yarn
+echo "Installing Yarn"
 npm install yarn -g --silent
 
-# Install abp
-echo "Installing abp"
+# Install ABP CLI
+echo "Installing ABP CLI"
 dotnet tool update -g Volo.Abp.Cli --prerelease
 # Locally just running "abp" would also work
 $env:Path += "$env:USERPROFILE\.dotnet\tools\;"
 
-# Install abp libs
-echo "Installing ABP libs"
+# Install ABP Libs
+echo "Installing ABP Libs"
 abp install-libs -wd "$DEPLOYMENT_SOURCE\src\TestCiCd.HttpApi.Host"
+##################################################################################################################################
+
+##################################################################################################################################
+# Deployment
+# ----------
 
 echo "Handling ASP.NET Core Web Application deployment."
 

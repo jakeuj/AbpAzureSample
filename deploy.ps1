@@ -97,7 +97,6 @@ $env:Path += "$env:USERPROFILE\.dotnet\tools\;"
 # Install abp libs
 echo "Installing ABP libs"
 abp install-libs -wd "$DEPLOYMENT_SOURCE\src\TestCiCd.HttpApi.Host"
-exitWithMessageOnError "ABP install-libs failed"
 
 echo "Handling ASP.NET Core Web Application deployment."
 

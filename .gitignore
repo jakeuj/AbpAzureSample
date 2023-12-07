@@ -263,3 +263,5 @@ src/TestCiCd.Blazor.Server.Tiered/Logs/*
 
 # Use abp install-libs to restore.
 **/wwwroot/libs/*
+src/TestCiCd.DbMigrator/appsettings.secrets.json
+src/TestCiCd.HttpApi.Host/appsettings.secrets.json

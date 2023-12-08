@@ -108,7 +108,7 @@ dotnet restore "$DEPLOYMENT_SOURCE\TestCiCd.sln"
 exitWithMessageOnError "Restore failed"
 
 # 2. Build and publish
-dotnet publish "$DEPLOYMENT_SOURCE\src/TestCiCd.HttpApi.Host/TestCiCd.HttpApi.Host.csproj" --output "%DEPLOYMENT_TEMP%" --configuration Release
+dotnet publish "$DEPLOYMENT_SOURCE\src/TestCiCd.HttpApi.Host/TestCiCd.HttpApi.Host.csproj" --output "$DEPLOYMENT_TEMP" --configuration Release
 exitWithMessageOnError "dotnet publish failed"
 
 # 3. KuduSync
